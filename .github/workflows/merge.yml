@@ -23,3 +23,13 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    - run: |
+       npm install -g sonar-scanner
+       sonar-scanner \
+        -Dsonar.projectKey=autoversion-node \
+        -Dsonar.organization="Jordi Salazar badia" \
+        -Dsonar.host.url=https://sonarcloud.io \
+        -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
+        -Dsonar.qualitygate.wait=true  # Esto garantiza que la pipeline falle si no pasa el Quality Gate
+    env:
+      SONARCLOUD_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Asegúrate de que el token esté configurado correctamente
