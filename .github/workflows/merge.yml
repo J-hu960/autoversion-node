@@ -27,7 +27,7 @@ jobs:
        npm install -g sonar-scanner
        sonar-scanner \
         -Dsonar.projectKey=J-hu960_autoversion-node\
-        -Dsonar.organization="Jordi Salazar badia" \
+        -Dsonar.organization=mysecretsonarkey \
         -Dsonar.host.url=https://sonarcloud.io \
         -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
         -Dsonar.qualitygate.wait=true  # Esto garantiza que la pipeline falle si no pasa el Quality Gate
